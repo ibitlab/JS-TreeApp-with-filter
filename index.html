@@ -1,0 +1,65 @@
+<!DOCTYPE html>
+<html lang="en-us">
+
+<head>
+    <meta charset="utf-8">
+    <title>Programming task</title>
+
+</head>
+
+<body>
+
+    <div class="container">
+        <article>
+            <header>
+                <h2>Tree with search field</h1>
+            </header>
+            
+            <div class="form-group has-success">
+                <label class="control-label" for="inputFilter">Filter tree on Name</label>
+                <input type="text" class="form-control tree-filter" id="inputFilter" aria-describedby="helpBlock2" placeholder="Search...">
+            </div>
+    
+            <div class="tree"></div>
+        </article>
+        </br>
+        <article>
+            <header>
+                <h3>Tree serialization()</h1>
+            </header>
+            <div>
+                <button type="button" class="btn btn-info tree-serialize-btn">Click to serialize</button>
+                  <label>
+                    <input type="checkbox" class="tree-serialize-pretty" value="">Pretty output
+                  </label>
+            </div>
+            <textarea class="bg-info form-control tree-serialize-result" rows="10"></textarea>
+        </article>
+    
+    </div>
+
+    <!-- Tree Templates -->
+    <script id="treelist" type="x-handlebars-template">
+        {{#each sub}} {{! Each sub }}
+        <li class="tree-item" data-id="{{id}}">{{! Linking DOM with Tree Object, as ID is unique }}
+            <span class="tree-item-name">{{name}}</span> {{#if sub}} {{! Within the context of the current sub }}
+            <ul class="tree-sub">
+                {{> treelist}} {{! Recursively render the partial }}
+            </ul>
+            {{/if}}
+        </li>
+        {{/each}}
+    </script>
+    
+    <script id="treemain" type="x-handlebars-template">
+        <ul class="tree-sub">
+            {{> treelist}}
+        </ul>
+    </script>
+    <!-- Tree Templates End-->
+    
+    
+	<script type="text/javascript" src="script.js"></script>
+</body>
+
+</html>

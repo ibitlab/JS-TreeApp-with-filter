@@ -1,0 +1,8 @@
+.tree-sub {
+    list-style-type: disc;
+}
+
+.filter-highlight {
+    color: red;
+    font-weight: bold;
+}
